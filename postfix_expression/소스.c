@@ -151,11 +151,19 @@ int main() {
 	precedence one;
 	char symbol;
 	char put[100];
-	int n=0;
-	scanf_s("%s", put, 100); //문자열 입력
-	input = put; //입력 문자열 설정
-	postfix(); //후위 표기법으로 변환
-	printf("%s\n", output); //출력 문자열 출력
-	int result = eval(); //후위 표기법 계산
-	printf("결과: %d\n", result); //결과 출력
+	while (1) {
+		printf("후위 표기법으로 변환할 수식을 입력하세요 (종료하려면 'exit' 입력): ");
+		scanf_s("%s", put, 100); //문자열 입력
+		if (strcmp(put, "exit") == 0) {
+			break; // 'exit' 입력 시 종료
+		}
+		input = put; //입력 문자열 설정
+		postfix(); //후위 표기법으로 변환
+		printf("후위 표기법: ");
+		printf("%s\n", output); //출력 문자열 출력
+		int result = eval(); //후위 표기법 계산
+		printf("결과: %d\n", result); //결과 출력
+
+	}
+	
 }
